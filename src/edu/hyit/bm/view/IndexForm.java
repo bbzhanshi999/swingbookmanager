@@ -19,6 +19,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 import java.awt.Color;
+import javax.swing.JLabel;
 
 public class IndexForm extends JFrame {
 
@@ -80,7 +81,7 @@ public class IndexForm extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				AddBookFrame addBookFrame = new AddBookFrame();
 				addBookFrame.setVisible(true);
-				add(addBookFrame);
+				getContentPane().add(addBookFrame);
 				addBookFrame.setBounds(400, 200, 600, 600);
 			}
 		});
@@ -88,6 +89,11 @@ public class IndexForm extends JFrame {
 		
 		
 		JMenuItem menuItem_2 = new JMenuItem("图书维护");
+		menuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//todo
+			}
+		});
 		menu_1.add(menuItem_2);
 		
 		JMenuItem logoutMenuItem = new JMenuItem("退出系统");
@@ -110,19 +116,24 @@ public class IndexForm extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		
+		ImageIcon background = new ImageIcon("/background.jpg");
+		JLabel backgroundlabel = new JLabel(background);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 712, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addComponent(backgroundlabel, GroupLayout.PREFERRED_SIZE, 1674, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 430, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addComponent(backgroundlabel, GroupLayout.PREFERRED_SIZE, 969, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);//设置最大化
 	}
-	
-
 }
